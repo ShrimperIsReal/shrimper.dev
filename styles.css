@@ -1,0 +1,105 @@
+html, body {
+    margin: 0;
+    min-height: 100%;
+    background-color: black;
+    background-image:
+        linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+
+    animation: griddy 1s linear infinite;
+
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 1.5em;
+}
+
+@keyframes griddy {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 40px 40px;
+    }
+}
+
+.centeredtext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35vh;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #444;
+    border-radius: 3px;
+    border: none;
+}
+
+.topbar {
+    position: fixed;
+    top: 10px;
+    left: 5%;
+    width: 90%;
+    height: 67px;
+    border-radius: 255px;
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: white 1px solid;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.topbar a.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    gap: 10px;
+    margin-right: auto;
+}
+
+.topbar .logo {
+    height: 50px;
+    width: 50px;
+}
+
+.topbar .logo-text {
+    font-size: 30px;
+    margin: 0;
+}
+
+.topbar .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    text-decoration: none;
+    margin: 10px;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 20px;
+    transition: font-size 0.3s ease;
+}
+
+.topbar .button:hover {
+    font-size: 22px;
+    text-shadow: white 0 0 10px;
+}
