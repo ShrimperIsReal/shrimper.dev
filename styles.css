@@ -13,6 +13,7 @@ html, body {
     color: white;
     font-family: Arial, sans-serif;
     font-size: 16px;
+    user-select: none;
 }
 :root {
     --topbar-height: 67px;
@@ -330,3 +331,12 @@ body {
     font-size: 25px;
     width: min(450px, 80%);
 }
+
+.preview {
+    height: auto;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}   
