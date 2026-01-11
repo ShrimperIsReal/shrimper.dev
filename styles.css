@@ -102,7 +102,7 @@ body {
     border-radius: 255px;
     font-size: 25px;
     background-color: rgba(0, 0, 0, 0.7);
-    border: white 1px solid;
+    border: rgba(255, 255, 255, 0.421) 2px solid;
     display: flex;
     align-items: center;
     padding: 0 20px;
@@ -123,13 +123,6 @@ body {
     height: 50px;
     width: 50px;
 }
-
-.topbar .button {
-    font-size: clamp(14px, 3vw, 20px);
-    margin: 6px;
-    white-space: nowrap;
-}
-
 
 .topbar .logo-text {
     font-size: clamp(18px, 4vw, 30px);
@@ -309,4 +302,31 @@ body {
 .submit-button:hover {
     border: 1px solid white;
     background-color: rgba(66, 66, 66, 0.5);
+}
+
+.buttons-container {
+    justify-content: center;
+    display: flex;
+}
+
+.centerbutton {
+    margin: auto 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.65);
+    border: grey 1px solid;
+    color: white;
+    height: 50px;
+    width: min(400px, 80%);
+    font-weight: normal;
+    transition: width 0.3s ease, font-size 0.3s ease;
+}
+
+.centerbutton:hover {
+    text-shadow: white 0 0 10px; 
+    font-size: 25px;
+    width: min(450px, 80%);
 }
