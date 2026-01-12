@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Lithium is a roblox tool designed to enhance your gaming experience with our fast execution and support for most of your scripts that can help you gain more performance!">
     <meta name="theme-color" content="#394c5f">
@@ -16,60 +17,92 @@
     <meta name="twitter:description" content="Fast execution and high performance for your scripts.">
     <meta name="twitter:image" content="https://shrimper.dev/images/Lithium%20Preview.png">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lithium - About</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <div class="topbar">
-    <a href="index.html" class="logo-container">
-        <img src="favicon.ico" draggable="false" alt="Lithium Logo" class="logo">
-        <p class="logo-text">Lithium</p>
-    </a>
+        <a href="index.html" class="logo-container">
+            <img src="favicon.ico" draggable="false" alt="Lithium Logo" class="logo">
+            <p class="logo-text">Lithium</p>
+        </a>
 
-    <a href="index.html" class="button">Home</a>
-    <a href="about.html" class="button">About</a>
-    <a href="https://discord.gg/mGG4mHXKUU" class="button">Discord Server</a>
-</div>
+        <a href="index.html" class="button">Home</a>
+        <a href="about.html" class="button">About</a>
+        <a href="https://discord.gg/mGG4mHXKUU" class="button">Discord Server</a>
+
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="https://discord.gg/mGG4mHXKUU">Discord Server</a>
+    </div>
 
     <div class="about-container">
         <p class="about-text fade-in-up">What is Lithium?</p>
-        <p class="about-description fade-in-up delay-1">Lithium is a roblox tool designed to enhance your gaming experience with our fast execution and support for most of your scripts that can help you gain more performance!</p>
+        <p class="about-description fade-in-up delay-1">
+            Lithium is a roblox tool designed to enhance your gaming experience with our fast execution and support for most of your scripts that can help you gain more performance!
+        </p>
+
         <p class="about-text fade-in-up delay-2">FAQ</p>
+
         <div class="faq-item fade-in delay-3">
             <p class="about-description faq-question">How many sUNC does Lithium have?</p>
             <p class="about-description faq-answer">I have honestly no idea dude ts is still in development</p>
         </div>
+
         <div class="faq-item fade-in delay-4">
             <p class="about-description faq-question">Is this executor free?</p>
             <p class="about-description faq-answer">No, this executor is not free, it will cost 20€ for a permanent key!</p>
         </div>
+
         <div class="faq-item fade-in delay-5">
             <p class="about-description faq-question">Is there a trial version?</p>
-            <p class="about-description faq-answer">Yes, you can get a 24 hours trial via boosting our discord server (48 hours if you boost twice)! This is so you can test it out before purchasing!</p>
+            <p class="about-description faq-answer">
+                Yes, you can get a 24 hours trial via boosting our discord server (48 hours if you boost twice)! This is so you can test it out before purchasing!
+            </p>
         </div>
+
         <div class="faq-item fade-in delay-6">
             <p class="about-description faq-question">Can I gift a key to someone?</p>
-            <p class="about-description faq-answer">Yes, you can gift a key to someone by purchasing a key and sending them the key!</p>
+            <p class="about-description faq-answer">
+                Yes, you can gift a key to someone by purchasing a key and sending them the key!
+            </p>
         </div>
+
         <div class="faq-item fade-in delay-7">
             <p class="about-description faq-question">Can I share my key with someone?</p>
-            <p class="about-description faq-answer">No, you cannot share your key with someone else. Keys are non-transferable and can only be used by the person who purchased them.</p>
+            <p class="about-description faq-answer">
+                No, you cannot share your key with someone else. Keys are non-transferable and can only be used by the person who purchased them.
+            </p>
         </div>
+
         <div class="faq-item fade-in">
             <p class="about-description faq-question">What payment methods do you accept?</p>
             <p class="about-description faq-answer">We accept payments via PayPal and KoFi.</p>
         </div>
+
         <div class="faq-item fade-in delay-1">
             <p class="about-description faq-question">How did you get the idea for the name?</p>
-            <p class="about-description faq-answer">Lithium is named after the chemical element lithium, which is known for its light weight and high energy density. We wanted to create a tool that is lightweight and powerful, just like the element.</p>
+            <p class="about-description faq-answer">
+                Lithium is named after the chemical element lithium, which is known for its light weight and high energy density. We wanted to create a tool that is lightweight and powerful, just like the element.
+            </p>
         </div>
     </div>
 
-    <div class="footer fade-in">© 2026 Lithium. All rights reserved. | Need assistance but you don't have discord? Contact us at support@shrimper.dev | I am aware about the issue where on phone, the topbar is bugged</div>
-</body>
-<script src="./oneko.js"></script>
+    <div class="footer fade-in">
+        © 2026 Lithium. All rights reserved. | Need assistance but you don't have discord? Contact us at support@shrimper.dev
+    </div>
 
+    <script src="./oneko.js"></script>
+    <script src="./mobile.js"></script>
+</body>
 </html>
