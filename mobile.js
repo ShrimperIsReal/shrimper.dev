@@ -1,4 +1,3 @@
-<script>
 const hamburger = document.getElementById("hamburger");
 const mobileMenu = document.getElementById("mobileMenu");
 
@@ -13,4 +12,3 @@ mobileMenu.querySelectorAll("a").forEach(link => {
         mobileMenu.classList.remove("open");
     });
 });
-</script>
