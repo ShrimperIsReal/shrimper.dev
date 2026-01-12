@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Lithium is a roblox tool designed to enhance your gaming experience with our fast execution and support for most of your scripts that can help you gain more performance!">
     <meta name="theme-color" content="#394c5f">
@@ -16,44 +17,85 @@
     <meta name="twitter:description" content="Fast execution and high performance for your scripts.">
     <meta name="twitter:image" content="https://shrimper.dev/images/Lithium%20Preview.png">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lithium - Home</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <div class="topbar">
-    <a href="index.html" class="logo-container">
-        <img src="favicon.ico" draggable="false" alt="Lithium Logo" class="logo">
-        <p class="logo-text">Lithium</p>
-    </a>
+        <a href="index.html" class="logo-container">
+            <img src="favicon.ico" draggable="false" alt="Lithium Logo" class="logo">
+            <p class="logo-text">Lithium</p>
+        </a>
 
-    <a href="index.html" class="button">Home</a>
-    <a href="about.html" class="button">About</a>
-    <a href="https://discord.gg/mGG4mHXKUU" class="button">Discord Server</a>
-</div>
+        <a href="index.html" class="button">Home</a>
+        <a href="about.html" class="button">About</a>
+        <a href="https://discord.gg/mGG4mHXKUU" class="button">Discord Server</a>
+
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="https://discord.gg/mGG4mHXKUU">Discord Server</a>
+    </div>
 
     <div class="centered">
-        <p class="centeredtext fade-in-up">Lithium - The Premium tool For Roblox</p>
-        <p class="centeredtext2 fade-in-up delay-1">Lithium, the roblox tool designed to enhance your gaming experience with fast execution and support for most scripts. (doesnt even exist yet btw)</p>
+        <p class="centeredtext fade-in-up">Lithium - The Premium Tool For Roblox</p>
+        <p class="centeredtext2 fade-in-up delay-1">
+            Lithium, the roblox tool designed to enhance your gaming experience with fast execution and support for most scripts.
+            (doesnt even exist yet btw)
+        </p>
+
         <div class="preview-container fade-in-up delay-2">
             <img class="preview" draggable="false" src="/images/Lithium Preview.png" alt="Lithium Preview">
         </div>
     </div>
 
     <div class="purchase-container fade-in">
-    <div class="buttons-container">
-        <a href="https://discord.gg/mGG4mHXKUU" class="centerbutton slide-in delay-3">Purchase</a>
-        <a href="about.html" class="centerbutton slide-in delay-4">About</a>
-        <a href="https://discord.gg/mGG4mHXKUU" class="centerbutton slide-in delay-5">Discord Server</a>
+        <div class="buttons-container">
+            <a href="https://discord.gg/mGG4mHXKUU" class="centerbutton slide-in delay-3">Purchase</a>
+            <a href="about.html" class="centerbutton slide-in delay-4">About</a>
+            <a href="https://discord.gg/mGG4mHXKUU" class="centerbutton slide-in delay-5">Discord Server</a>
+        </div>
+
+        <p class="trial-info fade-in delay-6">
+            Want to test before purchasing? You can boost our server for 24 hours per boost for a trial!
+        </p>
+
+        <p class="purchases-unavailable fade-in delay-7">
+            PURCHASES WILL BE AVAILABLE ON RELEASE | Note: Prices are not final and could change.
+        </p>
     </div>
-    <p class="trial-info fade-in delay-6">Want to test before purchasing? You can boost our server for a 24 hours per boost for a trial!</p>
-    <p class="purchases-unavailable fade-in delay-7">PURCHASES WILL BE AVAILABLE ON RELEASE | Note: Prices are not final and could change.</p>
-</div>
 
+    <div class="footer fade-in">
+        © 2026 Lithium. All rights reserved. |
+        Need assistance but you don't have Discord?
+        Contact us at support@shrimper.dev
+    </div>
 
-    <div class="footer fade-in">© 2026 Lithium. All rights reserved. | Need assistance but you don't have discord? Contact us at support@shrimper.dev | I am aware about the issue where on phone, the topbar is bugged</div>
+    <script src="./oneko.js"></script>
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            mobileMenu.classList.toggle("open");
+        });
+
+        mobileMenu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                hamburger.classList.remove("active");
+                mobileMenu.classList.remove("open");
+            });
+        });
+    </script>
 </body>
-<script src="./oneko.js"></script>
 </html>
