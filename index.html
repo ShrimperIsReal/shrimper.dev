@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Futuristic Portfolio</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div class="animated-bg">
+    <div class="grid-background"></div>
+    <div class="orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+  </div>
+
+  <!-- Entry Screen -->
+  <div class="entry-screen" id="entryScreen">
+    <div class="entry-content">
+      <h1 class="entry-title">PRESS TO ENTER</h1>
+      <button class="entry-button" id="enterBtn">Enter Portfolio</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content" id="mainContent">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Shrimper's Portfolio</h1>
+        <div class="typing-text">A website I spent way too long on.</div>
+        <button class="cta-button">View My Work</button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="feature-card">
+          <h3>Creative</h3>
+          <p>I use my imagination to create programs/games/websites. No matter how long it takes.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Passionate</h3>
+          <p>I spent over 2 years learning coding languages like Lua, HTML, and CSS.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Collaborative</h3>
+          <p>I'll work with any team as long as the members are respectful and communicative.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">🤖</div>
+          <div class="project-content">
+            <h3>Neural Framework</h3>
+            <p>A framework that can play.. Geometry Dash via trials and errors..? (I'm out of ideas)</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">🔥</div>
+          <div class="project-content">
+            <h3>NullFire</h3>
+            <p>A script for the roblox game Doors, this was made by multiple people.</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">🛠️</div>
+          <div class="project-content">
+            <h3>Roblox Experiments</h3>
+            <p>Not really a project, I just like to experiment with Roblox Studio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Coding languages</h3>
+          <div class="skill-item">Lua / Luau</div>
+          <div class="skill-item">HTML / CSS</div>
+        </div>
+        <div class="skill-category">
+          <h3>Programs Used</h3>
+          <div class="skill-item">GitHub (for uploading sites and stuff)</div>
+          <div class="skill-item">Roblox Studio</div>
+          <div class="skill-item">Visual Studio Code</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-content">
+        <p>Need a scripter for your roblox game? Contact me. (Not Free)</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <h4>Email</h4>
+            <p>support@shrimper.dev</p>
+          </div>
+          <div class="contact-item">
+            <h4>Discord</h4>
+            <p>real_shrimper</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const entryScreen = document.getElementById('entryScreen');
+    const enterBtn = document.getElementById('enterBtn');
+    const mainContent = document.getElementById('mainContent');
+    let audio;
+
+    enterBtn.addEventListener('click', () => {
+      audio = new Audio('/music.mp3');
+      audio.loop = true;
+      audio.volume = 0.3;
+      audio.play().catch(error => {
+        console.log('Audio playback failed:', error);
+      });
+
+      entryScreen.classList.add('hidden');
+      setTimeout(() => {
+        mainContent.classList.add('visible');
+      }, 50);
+    });
+
+    document.querySelectorAll('.cta-button').forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const projectsSection = document.querySelector('.projects');
+        projectsSection.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
