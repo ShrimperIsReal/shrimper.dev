@@ -1,144 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shrimper's Portfolio</title>
-    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umamusume Larper Leaderboard</title>
+
+    <link rel="stylesheet" href="larp.css">
 </head>
+
 <body>
-  <div class="animated-bg">
-    <div class="grid-background"></div>
-    <div class="orbs">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
+
+    <div class="page-header">
+        <h1>Global Leaderboard</h1>
+        <p>Top 20 Larpers Ranked</p>
     </div>
-  </div>
 
-  <div class="entry-screen" id="entryScreen">
-    <div class="entry-content">
-      <h1 class="entry-title">PRESS TO ENTER</h1>
-      <button class="entry-button" id="enterBtn">Enter Portfolio</button>
+    <div class="leaderboard-container">
+        <h1 class="title">The Biggest Larpers Of The Umamusume Discord Server</h1>
+
+        <div class="leaderboard">
+
+            <div class="player top1">
+                <span class="rank">#1</span>
+                <span class="name">HospitalBed</span>
+                <span class="quote">"Biggest larper ever bro"</span>
+            </div>
+
+            <div class="player top2">
+                <span class="rank">#2</span>
+                <span class="name">Ultimate Larp King</span>
+                <span class="quote">"Have you ever raced with your life on the line?"</span>
+            </div>
+
+            <div class="player top3">
+                <span class="rank">#3</span>
+                <span class="name">Mejiro Palmer in disguise</span>
+                <span class="quote">"Nah, he'd larp."</span>
+            </div>
+
+            <div class="player">
+                <span class="rank">#4</span>
+                <span class="name">Maruzensky Racing F1 Team</span>
+                <span class="quote">"Do they even know how to larp?"</span>
+            </div>
+
+        </div>
     </div>
-  </div>
 
-  <div class="content" id="mainContent">
-    <section class="hero">
-      <div class="hero-content">
-        <h1>Shrimper's Portfolio</h1>
-        <div class="typing-text">A website I spent way too long on.</div>
-        <button class="cta-button">View My Work</button>
-      </div>
-    </section>
-
-    <section class="about">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-grid">
-        <div class="feature-card">
-          <h3>Creative</h3>
-          <p>I use my imagination to create programs/games/websites. No matter how long it takes.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Passionate</h3>
-          <p>I spent over 2 years learning coding languages like Lua, HTML, and CSS.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Collaborative</h3>
-          <p>I'll work with any team as long as the members are respectful and communicative.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="projects">
-      <h2 class="section-title">Featured Projects</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-image">🤖</div>
-          <div class="project-content">
-            <h3>Neural Framework</h3>
-            <p>A framework that can play.. Geometry Dash via trials and errors..? (I'm out of ideas)</p>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-image">🔥</div>
-          <div class="project-content">
-            <h3>NullFire</h3>
-            <p>A script for the roblox game Doors, this was made by multiple people.</p>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-image">🛠️</div>
-          <div class="project-content">
-            <h3>Roblox Experiments</h3>
-            <p>Not really a project, I just like to experiment with Roblox Studio.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="skills">
-      <h2 class="section-title">Skills & Expertise</h2>
-      <div class="skills-grid">
-        <div class="skill-category">
-          <h3>Coding languages</h3>
-          <div class="skill-item">Lua / Luau</div>
-          <div class="skill-item">HTML / CSS</div>
-        </div>
-        <div class="skill-category">
-          <h3>Programs Used</h3>
-          <div class="skill-item">GitHub (for uploading sites and stuff)</div>
-          <div class="skill-item">Roblox Studio</div>
-          <div class="skill-item">Visual Studio Code</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact">
-      <h2 class="section-title">Get In Touch</h2>
-      <div class="contact-content">
-        <p>Need a scripter for your roblox game? Contact me. (Not Free)</p>
-        <div class="contact-info">
-          <div class="contact-item">
-            <h4>Email</h4>
-            <p>support@shrimper.dev</p>
-          </div>
-          <div class="contact-item">
-            <h4>Discord</h4>
-            <p>real_shrimper</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <script>
-    const entryScreen = document.getElementById('entryScreen');
-    const enterBtn = document.getElementById('enterBtn');
-    const mainContent = document.getElementById('mainContent');
-    let audio;
-
-    enterBtn.addEventListener('click', () => {
-      audio = new Audio('/music.mp3');
-      audio.loop = true;
-      audio.volume = 0.3;
-      audio.play().catch(error => {
-        console.log('Audio playback failed:', error);
-      });
-
-      entryScreen.classList.add('hidden');
-      setTimeout(() => {
-        mainContent.classList.add('visible');
-      }, 50);
-    });
-
-    document.querySelectorAll('.cta-button').forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        const projectsSection = document.querySelector('.projects');
-        projectsSection.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-  </script>
+    <footer class="footer">
+       Want to submit a larper? Friend and DM <a class="normal" href="https://discord.com/users/810181845856813139" target="_blank">real_shrimper</a> on discord to get them added to the leaderboard! | <a class="warn">Larpers have all rights to remove themselves by dming me.</a>
+    </footer>
 </body>
 </html>
-
