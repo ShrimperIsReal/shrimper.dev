@@ -1,55 +1,464 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umamusume Larper Leaderboard</title>
-    <link rel="stylesheet" href="larp.css">
-    <link rel="icon" href="favicon2.ico" type="image/x-icon">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Lightshade Premium Tutorial</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-<body>
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    <div class="page-header">
-        <h1>Global Leaderboard</h1>
-        <p>Top 20 Larpers Ranked</p>
-    </div>
+      :root {
+        --gold: #f5c842;
+        --gold-light: #ffe680;
+        --gold-dark: #c9a020;
+        --bg: #0a0a0f;
+        --surface: #13131a;
+        --surface-2: #1c1c28;
+        --border: rgba(245, 200, 66, 0.2);
+        --text: #f0f0f5;
+        --text-muted: #8888a0;
+      }
 
-    <div class="leaderboard-container">
-        <h1 class="title">The Biggest Larpers Of The Umamusume Discord Server</h1>
+      html, body {
+        height: 100%;
+        font-family: 'Inter', system-ui, sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+      }
 
-        <div class="leaderboard">
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        position: relative;
+      }
 
-            <div class="player top1">
-                <span class="rank">#1</span>
-                <span class="name">HospitalBed</span>
-                <span class="quote">"Biggest larper ever bro"</span>
-            </div>
+      .bg-grid {
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(245, 200, 66, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(245, 200, 66, 0.04) 1px, transparent 1px);
+        background-size: 48px 48px;
+        pointer-events: none;
+        z-index: 0;
+      }
 
-            <div class="player top2">
-                <span class="rank">#2</span>
-                <span class="name">Ultimate Larp King</span>
-                <span class="quote">"Have you ever raced with your life on the line?"</span>
-            </div>
+      .bg-glow {
+        position: fixed;
+        top: -20%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 800px;
+        height: 500px;
+        background: radial-gradient(ellipse, rgba(245, 200, 66, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+        animation: pulse-glow 4s ease-in-out infinite;
+      }
 
-            <div class="player top3">
-                <span class="rank">#3</span>
-                <span class="name">Mejiro Palmer in disguise</span>
-                <span class="quote">"Nah, he'd larp."</span>
-            </div>
+      @keyframes pulse-glow {
+        0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+        50% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+      }
 
-            <div class="player">
-                <span class="rank">#4</span>
-                <span class="name">Maruzensky Racing F1 Team</span>
-                <span class="quote">"Do they even know how to larp?"</span>
-            </div>
+      .container {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 24px;
+        max-width: 760px;
+        width: 100%;
+        text-align: center;
+      }
 
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(245, 200, 66, 0.1);
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        padding: 6px 16px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 32px;
+        animation: fade-in-down 0.6s ease both;
+      }
+
+      .badge-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--gold);
+        box-shadow: 0 0 6px var(--gold);
+        animation: blink 1.4s ease-in-out infinite;
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        margin-bottom: 20px;
+        animation: fade-in-down 0.7s 0.1s ease both;
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 40%, var(--gold-dark) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      p.subtitle {
+        font-size: 1.1rem;
+        color: var(--text-muted);
+        line-height: 1.7;
+        max-width: 520px;
+        margin-bottom: 48px;
+        animation: fade-in-down 0.7s 0.2s ease both;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 48px 40px;
+        width: 100%;
+        max-width: 540px;
+        position: relative;
+        overflow: hidden;
+        animation: fade-in-up 0.7s 0.3s ease both;
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 32px 80px rgba(0,0,0,0.5);
+      }
+
+      .card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      }
+
+      .card-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, rgba(245,200,66,0.2) 0%, rgba(245,200,66,0.05) 100%);
+        border: 1px solid rgba(245,200,66,0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 24px;
+        font-size: 32px;
+      }
+
+      .card h2 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        letter-spacing: -0.02em;
+      }
+
+      .card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 36px;
+      }
+
+      .features {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 36px;
+        text-align: left;
+      }
+
+      .features li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.92rem;
+        color: var(--text-muted);
+      }
+
+      .features li .check {
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: rgba(245, 200, 66, 0.15);
+        border: 1px solid rgba(245, 200, 66, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold);
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 18px 32px;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        border: none;
+        border-radius: 14px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+        color: #1a1200;
+        box-shadow: 0 4px 24px rgba(245, 200, 66, 0.35), 0 1px 0 rgba(255,255,255,0.3) inset;
+        text-decoration: none;
+      }
+
+      .btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 60%);
+        opacity: 1;
+        transition: opacity 0.2s;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 40px rgba(245, 200, 66, 0.5), 0 1px 0 rgba(255,255,255,0.3) inset;
+      }
+
+      .btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 12px rgba(245, 200, 66, 0.3);
+      }
+
+      .btn-shimmer {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+        transform: skewX(-15deg);
+        animation: shimmer 2.5s ease-in-out infinite 1s;
+      }
+
+      @keyframes shimmer {
+        0% { left: -100%; }
+        100% { left: 160%; }
+      }
+
+      .btn-text {
+        position: relative;
+        z-index: 1;
+      }
+
+      .btn-arrow {
+        position: relative;
+        z-index: 1;
+        transition: transform 0.2s ease;
+      }
+
+      .btn:hover .btn-arrow {
+        transform: translateX(4px);
+      }
+
+      .disclaimer {
+        margin-top: 16px;
+        font-size: 0.78rem;
+        color: #555570;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .steps-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0;
+        width: 100%;
+        max-width: 480px;
+        margin-top: 48px;
+        animation: fade-in-up 0.7s 0.5s ease both;
+      }
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        flex: 1;
+      }
+
+      .step-num {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--gold);
+      }
+
+      .step-line {
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+        align-self: flex-start;
+        margin-top: 18px;
+      }
+
+      .step-label {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-align: center;
+        line-height: 1.4;
+        max-width: 90px;
+      }
+
+      @keyframes fade-in-down {
+        from { opacity: 0; transform: translateY(-16px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes fade-in-up {
+        from { opacity: 0; transform: translateY(16px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .particles {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        background: var(--gold);
+        opacity: 0;
+        animation: float-particle linear infinite;
+      }
+
+      @keyframes float-particle {
+        0% { opacity: 0; transform: translateY(0) scale(0); }
+        10% { opacity: 0.6; }
+        90% { opacity: 0.2; }
+        100% { opacity: 0; transform: translateY(-100vh) scale(1.5); }
+      }
+
+      @media (max-width: 540px) {
+        .card { padding: 32px 24px; }
+        .steps-row { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Exclusive Guide &mdash; Limited Time
+      </div>
+
+      <h1>Tutorial on how to get<br><span class="gradient-text">free premium</span> on Lightshade!</h1>
+      <p class="subtitle">Unlock every premium feature without spending a single cent. This method still works in 2026 &mdash; but it might get patched soon.</p>
+
+      <div class="card">
+        <div class="card-icon">&#9733;</div>
+        <h2>Premium Unlock Method</h2>
+        <p>Follow the steps inside to permanently activate all premium features on your account instantly.</p>
+
+        <ul class="features">
+          <li><span class="check">&#10003;</span> Permanent premium activation &mdash; no subscription needed</li>
+          <li><span class="check">&#10003;</span> Works on all platforms and devices</li>
+          <li><span class="check">&#10003;</span> No downloads, no surveys, no personal info</li>
+          <li><span class="check">&#10003;</span> Verified and tested by the community</li>
+        </ul>
+
+        <a class="btn" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener">
+          <div class="btn-shimmer"></div>
+          <span class="btn-text">Click to see</span>
+          <span class="btn-arrow">&#8594;</span>
+        </a>
+
+        <p class="disclaimer">
+          <span>&#128274;</span>
+          100% safe &bull; No account required &bull; Works instantly
+        </p>
+      </div>
+
+      <div class="steps-row">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-label">Click the button above</div>
         </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-label">Follow the video guide</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-label">Enjoy premium for free</div>
+        </div>
+      </div>
     </div>
 
-    <footer class="footer">
-       Want to submit a larper? Friend and DM <a class="normal" href="https://discord.com/users/810181845856813139" target="_blank">real_shrimper</a> on discord to get them added to the leaderboard! | <a class="warn">Larpers have all rights to remove themselves by dming me.</a>
-    </footer>
-</body>
+    <script>
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 28; i++) {
+        const p = document.createElement('div');
+        p.classList.add('particle');
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.bottom = '-10px';
+        p.style.animationDuration = (6 + Math.random() * 12) + 's';
+        p.style.animationDelay = (Math.random() * 10) + 's';
+        const size = (2 + Math.random() * 3) + 'px';
+        p.style.width = size;
+        p.style.height = size;
+        container.appendChild(p);
+      }
+    </script>
+  </body>
 </html>
-
