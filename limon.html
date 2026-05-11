@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surprise</title>
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+body {
+  background: url("https://wallpapercave.com/uwp/uwp4997449.jpeg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 0;
+}
+
+.snow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10vh;
+  border-radius: 50%;
+  background: white;
+  opacity: 0;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  0% {
+    transform: translate3d(var(--start-x), 0, 0);
+    opacity: 0;
+  }
+  10% { opacity: var(--peak-opacity); }
+  100% {
+    transform: translate3d(calc(var(--start-x) + var(--drift-x)), 120vh, 0);
+    opacity: 0;
+  }
+}
+
+.UIOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: bold;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
+  z-index: 999;
+  cursor: pointer;
+}
+
+.centerbox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 2;
+
+  width: min(650px, 90vw);
+  padding: 30px;
+
+  text-align: center;
+
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+}
+
+.User {
+  font-size: 30px;
+  margin: 0 0 10px;
+}
+
+.startBtn {
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.startBtn:hover {
+  transform: scale(1.05);
+  background: rgba(255,255,255,0.1);
+}
+
+.typewriter {
+  margin-top: 15px;
+  font-size: 15px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  text-align: left;
+}
+</style>
+</head>
+
+<body>
+
+<div class="snow" id="snow"></div>
+
+<div class="UIOverlay" id="overlay">
+  Click for a surprise
+</div>
+
+<div class="centerbox">
+  <p class="User">Surprise</p>
+
+  <div id="desc">
+    <button class="startBtn" id="startBtn">Click for a surprise</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+const overlay = document.getElementById("overlay");
+const startBtn = document.getElementById("startBtn");
+const desc = document.getElementById("desc");
+
+const text =
+`Hi Limon! Singularity here, I would like to tell you that I've really appreciated all you've done for us and that I wish you a happy birthday! I couldn't really make you a proper gift in time, so instead I scratched my ass off making this just for you! Thank you for all you've done for us! You're an amazing owner! Also, is alcohol good? Lol. Anyways, I hope you have a great day! I'm really sorry for the website being rushed, I only remembered your birthday recently and I tried my best to do something, but it was difficult! Happy 18th birthday!~`;
+
+function typeWriter(i = 0) {
+  if (i === 0) {
+    desc.innerHTML = "<div class='typewriter' id='type'></div>";
+  }
+
+  const el = document.getElementById("type");
+
+  if (i < text.length) {
+    el.innerHTML += text.charAt(i);
+    setTimeout(() => typeWriter(i + 1), 22);
+  }
+}
+
+function launchConfetti() {
+  const end = Date.now() + 2000;
+
+  (function frame() {
+    confetti({
+      particleCount: 6,
+      spread: 100,
+      origin: { y: 0.6 }
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
+}
+
+function spawnSnow() {
+  const snow = document.getElementById("snow");
+
+  for (let i = 0; i < 70; i++) {
+    const flake = document.createElement("div");
+    flake.className = "snowflake";
+
+    const size = Math.random() * 4 + 2;
+
+    flake.style.width = size + "px";
+    flake.style.height = size + "px";
+
+    flake.style.setProperty("--start-x", Math.random() * window.innerWidth + "px");
+    flake.style.setProperty("--drift-x", (Math.random() * 120 - 60) + "px");
+    flake.style.setProperty("--peak-opacity", Math.random());
+    flake.style.animationDuration = (Math.random() * 6 + 6) + "s";
+
+    snow.appendChild(flake);
+  }
+}
+
+function start() {
+  overlay.style.display = "none";
+  startBtn.style.display = "none";
+
+  launchConfetti();
+  typeWriter();
+}
+
+overlay.addEventListener("click", start);
+startBtn.addEventListener("click", start);
+
+spawnSnow();
+</script>
+
+</body>
+</html>
