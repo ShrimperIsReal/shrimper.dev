@@ -3,94 +3,854 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-<link rel="stylesheet" href="main.css">
+<title>Singularity.AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&family=Orbitron:wght@400;600&family=Rajdhani:wght@400;600&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&family=Cinzel:wght@400;600&family=Righteous&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="snow" id="snow"></div>
-
-<div class="UIOverlay">
-  Click to see the page
-</div>
-
-<div class="centerbox">
-  <img class="icon" src="Assets/Images/ICON.gif" alt="Avatar Icon">
-
-  <p class="User">Singularity</p>
-
-  <div class="Desc">
-    <p>
-      Welcome to my page! Everything I put here is stuff about me!
-      I'm a 13-year-old guy who likes programming stuff such as:
-    </p>
-
-    <ul>
-      <li>Web development</li>
-      <li>Game development</li>
-      <li>Reverse engineering</li>
-    </ul>
-
-    <p>
-      Coding has been my passion for a while now, and I hope to make some cool projects in the future!
-    </p>
-
-    <p>
-      Also a moderator for Lightshade!
-    </p>
-
-    <p class="SocialTitle">Socials</p>
-
-    <div class="socials">
-      <a class="social-btn" href="https://www.youtube.com/@real_s1ngularity" target="_blank" aria-label="YouTube">
-        <svg viewBox="0 0 24 24">
-          <path d="M23.5 6.2s-.2-1.7-.9-2.4c-.9-.9-1.9-.9-2.4-1C16.8 2.5 12 2.5 12 2.5s-4.8 0-8.2.3c-.5.1-1.5.1-2.4 1C.7 4.5.5 6.2.5 6.2S.2 8.1.2 10v1.8c0 1.9.3 3.8.3 3.8s.2 1.7.9 2.4c.9.9 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.8 0 8.2-.3c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.4.9-2.4s.3-1.9.3-3.8V10c0-1.9-.3-3.8-.3-3.8zM9.8 14.3V7.7l6.2 3.3-6.2 3.3z"></path>
-        </svg>
-      </a>
-
-      <a class="social-btn" href="https://discord.com/users/810181845856813139" target="_blank" aria-label="Discord">
-        <svg viewBox="0 0 24 24">
-          <path d="M20.3 4.4A16.5 16.5 0 0 0 16.2 3l-.2.4c1.5.4 2.2 1 2.2 1a13.8 13.8 0 0 0-6.2-1.4 13.8 13.8 0 0 0-6.2 1.4s.7-.6 2.2-1L7.8 3a16.5 16.5 0 0 0-4.1 1.4C1.1 8.2.4 11.9.7 15.5A16.6 16.6 0 0 0 5.7 18s.6-.8 1.1-1.5a7.2 7.2 0 0 1-1.8-.9l.4-.3a11.8 11.8 0 0 0 13.2 0l.4.3a7.2 7.2 0 0 1-1.8.9c.5.7 1.1 1.5 1.1 1.5a16.6 16.6 0 0 0 5-2.5c.4-4.1-.7-7.7-3-11.1zM8.4 13.9c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm7.2 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"></path>
-        </svg>
-      </a>
-
-      <a class="social-btn" href="https://x.com/_DefNotMeta" target="_blank" aria-label="X">
-        <svg viewBox="0 0 24 24">
-          <path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-7.4L6.4 22H3.2l7.3-8.4L2.8 2h6.4l4.4 6.7L18.9 2zm-1.1 17.8h1.7L8.3 4.1H6.5l11.3 15.7z"></path>
-        </svg>
-      </a>
+<div id="app">
+  <div class="bg"></div>
+  <div class="app-inner">
+    <div class="header">
+      <div class="header-text">
+        <span class="header-title">Singularity.AI</span>
+        <span class="header-sub">An AI that is supposed to sound like me, feel like me, keeping the feeling of me being present | NOTE: Everything is saved LOCALLY, which means it only stays on THIS browser.</span>
+      </div>
+      <div class="header-buttons">
+        <button class="hbtn active" id="btn-chat" title="Chat" onclick="showPanel('chat')">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </button>
+        <button class="hbtn" id="btn-memory" title="Memory" onclick="showPanel('memory')">
+          <svg viewBox="0 0 24 24">
+            <path d="M9 17H6a4 4 0 0 1 0-8 .9.9 0 0 1 .1 0A5 5 0 0 1 16 10.5"/>
+            <path d="M13 10a4 4 0 1 1 0 8h-1"/>
+            <path d="M17 7a2.5 2.5 0 0 0-1.5-2.3A3.5 3.5 0 0 0 10 8"/>
+          </svg>
+        </button>
+        <button class="hbtn" id="btn-newchat" title="New Chat" onclick="createNewChat()">
+  <svg viewBox="0 0 24 24">
+    <path d="M12 5v14"/>
+    <path d="M5 12h14"/>
+  </svg>
+</button>
+        <button class="hbtn" id="btn-settings" title="Settings" onclick="showPanel('settings')">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+      </div>
     </div>
-  </div>
-</div>
-
-<div class="music-player">
-  <img class="music-art" src="Assets/Images/NewIcon.jpg" alt="Freefall cover">
-  <div class="music-info">
-    <div class="music-title">It Passed You By</div>
-    <div class="music-artist">Slendstone</div>
-    <canvas id="visualizer" width="130" height="24"></canvas>
-  </div>
-  <div class="music-controls">
-    <div class="volume-wrap">
-      <span class="vol-icon" id="volIcon">🔊</span>
-      <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
-    </div>
-    <div class="speed-wrap">
-      <div class="custom-select">
-        <div class="select-selected" id="selectSelected">1× speed</div>
-        <div class="select-items" id="selectItems">
-          <div class="select-item" data-val="0.5">0.5× slow</div>
-          <div class="select-item" data-val="0.75">0.75× slow</div>
-          <div class="select-item selected" data-val="1">1× normal</div>
-          <div class="select-item" data-val="1.25">1.25× fast</div>
-          <div class="select-item" data-val="1.5">1.5× fast</div>
-          <div class="select-item" data-val="2">2× fast</div>
+    <div class="panels">
+      <div class="panel active" id="panel-chat">
+        <div class="chat-messages" id="chat-messages">
+          <div class="msg ai">
+            <div class="avatar">S</div>
+            <div class="bubble">Hi!</div>
+          </div>
+        </div>
+        <div class="chat-input-area">
+          <textarea class="chat-input" id="chat-input" rows="1" placeholder="say something..."></textarea>
+          <button class="send-btn" onclick="sendMessage()">
+            <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="panel" id="panel-memory">
+        <div class="memory-panel-inner">
+          <div class="memory-header">
+            <h2>Memory</h2>
+            <p>click a chat to jump back into it</p>
+          </div>
+          <div class="memory-grid" id="memory-grid">
+            <div class="memory-empty" style="grid-column:1/-1">no chats yet — start talking first</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel" id="panel-settings">
+        <div class="settings-inner">
+          <div class="settings-section">
+            <div class="settings-section-label">Typography</div>
+            <div class="setting-row">
+              <div class="setting-row-left">
+                <span class="setting-row-label">Font</span>
+                <span class="setting-row-sub">changes the chat font</span>
+              </div>
+              <select id="font-select" onchange="previewFont()">
+                <option value="Nunito">Nunito</option>
+                <option value="Orbitron">Orbitron</option>
+                <option value="Rajdhani">Rajdhani</option>
+                <option value="'Share Tech Mono'">Share Tech Mono</option>
+                <option value="'Exo 2'">Exo 2</option>
+                <option value="Cinzel">Cinzel</option>
+                <option value="Righteous">Righteous</option>
+              </select>
+            </div>
+            <div id="font-preview">the quick brown fox jumps over the lazy dog — Singularity.AI</div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-section-label">Chat</div>
+            <div class="setting-row">
+              <div class="setting-row-left">
+                <span class="setting-row-label">Message speed</span>
+                <span class="setting-row-sub">how fast responses type out</span>
+              </div>
+              <input type="range" id="speed-range" min="1" max="5" step="1" value="3" oninput="updateSpeed()">
+              <span class="speed-val" id="speed-label">Normal</span>
+            </div>
+          </div>
+          <button class="settings-save" onclick="applySettings()">Apply settings</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script>
+const API_KEY = '8N3DVPTZ3qWrfGrFDicXvxeLpJb1nOby';
+const MODEL = 'mistral-medium-2505';
 
-<script src="Assets/Scripts/script.js">
+const speedLabels = ['Very slow', 'Slow', 'Normal', 'Fast', 'Instant'];
+const speedDelays = [60, 35, 18, 7, 0];
+
+let currentFont = 'Nunito';
+let currentSpeed = 2;
+
+let isTyping = false;
+
+let systemPrompt = '';
+
+let chatHistory =
+  JSON.parse(localStorage.getItem('singularity_chats') || '[]');
+
+let currentChatId =
+  localStorage.getItem('singularity_current_chat');
+
+let convoMessages = [];
+
+if (!currentChatId) {
+
+  currentChatId = 'chat_' + Date.now();
+
+  localStorage.setItem(
+    'singularity_current_chat',
+    currentChatId
+  );
+
+}
+
+function createNewChat() {
+
+  currentChatId = 'chat_' + Date.now();
+
+  convoMessages = [];
+
+  const newChat = {
+
+    id: currentChatId,
+
+    preview: 'new chat',
+
+    time: new Date().toLocaleString(),
+
+    messages: [
+
+      {
+        role: 'ai',
+        text:
+          "hey. i'm Singularity — basically a version of the person who made this. ask me whatever, i'll vibe with it."
+      }
+
+    ]
+
+  };
+
+  chatHistory.unshift(newChat);
+
+  saveChats();
+
+  const msgs =
+    document.getElementById(
+      'chat-messages'
+    );
+
+  msgs.innerHTML = '';
+
+  appendBubble(
+    'ai',
+    newChat.messages[0].text,
+    false
+  );
+
+  renderMemory();
+
+  showPanel('chat');
+
+}
+
+async function loadSystemPrompt() {
+
+  try {
+
+    const res =
+      await fetch('./system_prompt.txt');
+
+    systemPrompt =
+      await res.text();
+
+  } catch {
+
+    systemPrompt =
+      'you are singularity.';
+
+  }
+
+}
+
+loadSystemPrompt();
+
+function saveChats() {
+
+  localStorage.setItem(
+    'singularity_chats',
+    JSON.stringify(chatHistory)
+  );
+
+  localStorage.setItem(
+    'singularity_current_chat',
+    currentChatId
+  );
+
+}
+
+function getCurrentChat() {
+
+  let chat =
+    chatHistory.find(
+      c => c.id === currentChatId
+    );
+
+  if (!chat) {
+
+    chat = {
+
+      id: currentChatId,
+
+      preview: 'new chat',
+
+      time: new Date().toLocaleString(),
+
+      messages: [
+
+        {
+          role: 'ai',
+          text:
+            "hey. i'm Singularity — basically a version of the person who made this. ask me whatever, i'll vibe with it."
+        }
+
+      ]
+
+    };
+
+    chatHistory.unshift(chat);
+
+  }
+
+  return chat;
+
+}
+
+function showPanel(name) {
+
+  document
+    .querySelectorAll('.panel')
+    .forEach(p =>
+      p.classList.remove('active')
+    );
+
+  document
+    .querySelectorAll('.hbtn')
+    .forEach(b =>
+      b.classList.remove('active')
+    );
+
+  document
+    .getElementById('panel-' + name)
+    .classList.add('active');
+
+  document
+    .getElementById('btn-' + name)
+    .classList.add('active');
+
+  if (name === 'memory') {
+
+    renderMemory();
+
+  }
+
+}
+
+function previewFont() {
+
+  const f =
+    document.getElementById(
+      'font-select'
+    ).value;
+
+  document.getElementById(
+    'font-preview'
+  ).style.fontFamily = f;
+
+}
+
+function updateSpeed() {
+
+  const v =
+    parseInt(
+      document.getElementById(
+        'speed-range'
+      ).value
+    ) - 1;
+
+  document.getElementById(
+    'speed-label'
+  ).textContent = speedLabels[v];
+
+}
+
+function applySettings() {
+
+  currentFont =
+    document.getElementById(
+      'font-select'
+    ).value;
+
+  currentSpeed =
+    parseInt(
+      document.getElementById(
+        'speed-range'
+      ).value
+    ) - 1;
+
+  document.getElementById(
+    'panel-chat'
+  ).style.fontFamily = currentFont;
+
+  document.getElementById(
+    'chat-input'
+  ).style.fontFamily = currentFont;
+
+  const btn =
+    document.querySelector(
+      '.settings-save'
+    );
+
+  btn.textContent = 'Applied ✓';
+
+  setTimeout(() => {
+
+    btn.textContent =
+      'Apply settings';
+
+  }, 1500);
+
+}
+
+function renderMemory() {
+
+  const grid =
+    document.getElementById(
+      'memory-grid'
+    );
+
+  if (chatHistory.length === 0) {
+
+    grid.innerHTML =
+      '<div class="memory-empty" style="grid-column:1/-1">no chats yet — start talking first</div>';
+
+    return;
+
+  }
+
+  grid.innerHTML =
+    chatHistory.map((c, i) => `
+
+      <div
+        class="memory-card"
+        onclick="loadChat(${i})"
+      >
+
+        <div class="memory-card-id">
+          Chat #${c.id}
+        </div>
+
+        <div class="memory-card-preview">
+          ${escapeHtml(c.preview)}
+        </div>
+
+        <div class="memory-card-time">
+          ${c.time}
+        </div>
+
+      </div>
+
+    `).join('');
+
+}
+
+function escapeHtml(str) {
+
+  return str
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+
+}
+
+function loadChat(i) {
+
+  showPanel('chat');
+
+  const msgs =
+    document.getElementById(
+      'chat-messages'
+    );
+
+  msgs.innerHTML = '';
+
+  convoMessages = [];
+
+  chatHistory[i].messages.forEach(m => {
+
+    appendBubble(
+      m.role,
+      m.text,
+      false
+    );
+
+    if (m.role === 'user') {
+
+      convoMessages.push({
+
+        role: 'user',
+        content: m.text
+
+      });
+
+    }
+
+    if (m.role === 'ai') {
+
+      convoMessages.push({
+
+        role: 'assistant',
+        content: m.text
+
+      });
+
+    }
+
+  });
+
+}
+
+function appendBubble(
+  role,
+  text,
+  animate
+) {
+
+  const msgs =
+    document.getElementById(
+      'chat-messages'
+    );
+
+  const div =
+    document.createElement('div');
+
+  div.className =
+    'msg ' + role;
+
+  const bubble =
+    document.createElement('div');
+
+  bubble.className =
+    'bubble';
+
+  const av =
+    document.createElement('div');
+
+  av.className =
+    'avatar';
+
+  av.textContent =
+    role === 'ai'
+      ? 'S'
+      : 'U';
+
+  div.appendChild(av);
+
+  div.appendChild(bubble);
+
+  msgs.appendChild(div);
+
+  msgs.scrollTop =
+    msgs.scrollHeight;
+
+  if (
+    !animate ||
+    speedDelays[currentSpeed] === 0
+  ) {
+
+    bubble.textContent = text;
+
+    msgs.scrollTop =
+      msgs.scrollHeight;
+
+    return Promise.resolve();
+
+  }
+
+  return new Promise(res => {
+
+    let i = 0;
+
+    const tick = () => {
+
+      if (i <= text.length) {
+
+        bubble.textContent =
+          text.slice(0, i++);
+
+        msgs.scrollTop =
+          msgs.scrollHeight;
+
+        setTimeout(
+          tick,
+          speedDelays[currentSpeed]
+        );
+
+      } else {
+
+        res();
+
+      }
+
+    };
+
+    tick();
+
+  });
+
+}
+
+function showTypingIndicator() {
+
+  const msgs =
+    document.getElementById(
+      'chat-messages'
+    );
+
+  const div =
+    document.createElement('div');
+
+  div.className = 'msg ai';
+
+  div.id =
+    'typing-indicator';
+
+  div.innerHTML = `
+
+    <div class="avatar">
+      S
+    </div>
+
+    <div class="bubble">
+
+      <div class="typing">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </div>
+
+    </div>
+
+  `;
+
+  msgs.appendChild(div);
+
+  msgs.scrollTop =
+    msgs.scrollHeight;
+
+}
+
+function removeTypingIndicator() {
+
+  const el =
+    document.getElementById(
+      'typing-indicator'
+    );
+
+  if (el) el.remove();
+
+}
+
+const input =
+  document.getElementById(
+    'chat-input'
+  );
+
+input.addEventListener(
+  'keydown',
+  e => {
+
+    if (
+      e.key === 'Enter'
+      && !e.shiftKey
+    ) {
+
+      e.preventDefault();
+
+      sendMessage();
+
+    }
+
+  }
+);
+
+input.addEventListener(
+  'input',
+  () => {
+
+    input.style.height =
+      'auto';
+
+    input.style.height =
+      Math.min(
+        input.scrollHeight,
+        120
+      ) + 'px';
+
+  }
+);
+
+function saveToMemory(
+  userMsg,
+  aiMsg
+) {
+
+  const existing =
+    chatHistory.find(
+      c => c.id === currentChatId
+    );
+
+  const entry = {
+
+    role: 'user',
+    text: userMsg
+
+  };
+
+  const aiEntry = {
+
+    role: 'ai',
+    text: aiMsg
+
+  };
+
+  if (existing) {
+
+    existing.preview =
+      userMsg.slice(0, 80)
+      + (
+        userMsg.length > 80
+          ? '…'
+          : ''
+      );
+
+    existing.messages.push(
+      entry,
+      aiEntry
+    );
+
+  } else {
+
+    chatHistory.unshift({
+
+      id: currentChatId,
+
+      preview:
+        userMsg.slice(0, 80)
+        + (
+          userMsg.length > 80
+            ? '…'
+            : ''
+        ),
+
+      time:
+        new Date().toLocaleString(),
+
+      messages: [
+
+        {
+          role: 'ai',
+          text:
+            "hey. i'm Singularity — basically a version of the person who made this. ask me whatever, i'll vibe with it."
+        },
+
+        entry,
+
+        aiEntry
+
+      ]
+
+    });
+
+  }
+
+  saveChats();
+
+}
+
+async function sendMessage() {
+
+  if (isTyping) return;
+
+  const text =
+    input.value.trim();
+
+  if (!text) return;
+
+  input.value = '';
+
+  input.style.height = 'auto';
+
+  appendBubble(
+    'user',
+    text,
+    false
+  );
+
+  convoMessages.push({
+
+    role: 'user',
+    content: text
+
+  });
+
+  isTyping = true;
+
+  showTypingIndicator();
+
+  try {
+
+    const res =
+      await fetch(
+        'https://api.mistral.ai/v1/chat/completions',
+        {
+
+          method: 'POST',
+
+          headers: {
+
+            'Content-Type':
+              'application/json',
+
+            'Authorization':
+              'Bearer ' + API_KEY
+
+          },
+
+          body: JSON.stringify({
+
+            model: MODEL,
+
+            messages: [
+
+              {
+                role: 'system',
+                content: systemPrompt
+              },
+
+              ...convoMessages
+
+            ],
+
+            temperature: 0.9,
+
+            max_tokens: 1000
+
+          })
+
+        }
+      );
+
+    const data =
+      await res.json();
+
+    console.log(data);
+
+    const reply =
+      data.choices?.[0]
+      ?.message?.content
+      || '...';
+
+    removeTypingIndicator();
+
+    await appendBubble(
+      'ai',
+      reply,
+      true
+    );
+
+    convoMessages.push({
+
+      role: 'assistant',
+      content: reply
+
+    });
+
+    saveToMemory(
+      text,
+      reply
+    );
+
+  } catch(e) {
+
+    console.error(e);
+
+    removeTypingIndicator();
+
+    await appendBubble(
+
+      'ai',
+
+      'something broke.',
+
+      true
+
+    );
+
+  }
+
+  isTyping = false;
+
+}
+
+window.addEventListener(
+  'load',
+  () => {
+
+    if (
+      chatHistory.length > 0
+    ) {
+
+      loadChat(0);
+
+    }
+
+  }
+);
 </script>
 </body>
 </html>
